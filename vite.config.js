@@ -11,6 +11,8 @@ export default defineConfig({
 				test: {
 					name: 'server',
 					environment: 'node',
+					// Unit tests live co-located with their source files (src/**).
+					// E2E tests (Playwright) live in tests/ — see playwright.config.js.
 					include: ['src/**/*.{test,spec}.{js,ts}'],
 					exclude: ['src/**/*.svelte.{test,spec}.{js,ts}']
 				}
