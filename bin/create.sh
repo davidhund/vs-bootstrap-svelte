@@ -113,7 +113,24 @@ fi
 ok "package.json updated"
 
 # ---------------------------------------------------------------------------
-# Step 4: Install dependencies
+# Step 4: Replace README with the project stub
+# ---------------------------------------------------------------------------
+
+step "Setting up README.md"
+
+if [[ -f "$DEST/README.template.md" ]]; then
+  # Replace project name placeholder and install as README.md
+  if [[ "$(uname)" == "Darwin" ]]; then
+    sed -i '' "s/PROJECT_NAME/$PROJECT_NAME/g" "$DEST/README.template.md"
+  else
+    sed -i "s/PROJECT_NAME/$PROJECT_NAME/g" "$DEST/README.template.md"
+  fi
+  mv "$DEST/README.template.md" "$DEST/README.md"
+  ok "README.md initialised from template stub"
+fi
+
+# ---------------------------------------------------------------------------
+# Step 5: Install dependencies
 # ---------------------------------------------------------------------------
 
 step "Installing dependencies with pnpm"
