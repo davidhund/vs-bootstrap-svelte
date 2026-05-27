@@ -58,6 +58,7 @@
 
 	<footer class="home__footer">
 		<a href="https://kit.svelte.dev/docs">SvelteKit docs</a>
+		<a href="/demo">Demo: server load →</a>
 		<a href="/missing-page">Test error page →</a>
 	</footer>
 </main>
