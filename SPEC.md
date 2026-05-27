@@ -57,7 +57,7 @@
 | `test:unit` | `vitest` |
 | `test:e2e` | `playwright install && playwright test` |
 | `test` | unit + e2e, single run |
-| `ci` | `biome ci` + `check` + `test:unit` |
+| `ci` | `biome ci` + `check` + `test:unit` — **no Playwright** (see below) |
 
 ---
 
@@ -103,7 +103,9 @@ Target: **[Baseline 2026 Widely Available](https://web.dev/baseline)**
 - Located in `tests/`
 - Cover user-visible flows, not implementation details
 - Minimum: home page loads, no JS errors in console
-- Run against the dev server (`webServer` config in `playwright.config.js`)
+- Run against the production preview build (`webServer` config in `playwright.config.js`)
+- **Not included in `pnpm ci` or the GitHub Actions workflow** — browser installs are slow
+  and E2E tests are run locally (`pnpm test:e2e`) or in a dedicated pipeline step per project
 
 ---
 

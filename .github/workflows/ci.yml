@@ -26,5 +26,8 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      # Runs: biome ci + svelte-check + vitest (unit only)
+      # Playwright E2E is excluded: browser installs are slow and E2E
+      # tests are run locally or in a dedicated pipeline step as needed.
       - name: CI checks
         run: pnpm ci

@@ -33,11 +33,12 @@ No TypeScript source files. Type safety is provided by JSDoc annotations and `sv
 | `pnpm lint` | Biome lint |
 | `pnpm format` | Biome format (writes) |
 | `pnpm test:unit` | Vitest in watch mode |
-| `pnpm test:e2e` | Install Playwright browsers + run E2E |
-| `pnpm test` | All tests, single run |
-| `pnpm ci` | `biome ci` + `svelte-check` + unit tests |
+| `pnpm test:e2e` | Install Playwright browsers + run E2E (local only) |
+| `pnpm test` | All tests, single run (local only) |
+| `pnpm ci` | `biome ci` + `svelte-check` + unit tests — **no Playwright** |
 
 **Run `pnpm ci` before every commit.**
+E2E tests (`pnpm test:e2e`) are run locally or in a dedicated pipeline step — not in `pnpm ci` or GitHub Actions, because browser installs are slow.
 
 ---
 
