@@ -1,22 +1,83 @@
 /*
- * Design tokens — define your project's design system here.
+ * Global stylesheet — cascade layer architecture.
  *
- * Example:
+ * Layer order (lowest → highest priority):
+ *   reset   universal box model + element resets
+ *   tokens  CSS custom properties (design tokens)
+ *   base    element-level defaults that consume tokens
  *
- * :root {
- *   --color-bg:      #ffffff;
- *   --color-text:    #111111;
- *   --color-accent:  #0057d9;
- *
- *   --font-body:     system-ui, sans-serif;
- *   --font-mono:     ui-monospace, monospace;
- *
- *   --space-1:  0.25rem;
- *   --space-2:  0.5rem;
- *   --space-4:  1rem;
- *   --space-8:  2rem;
- *
- *   --radius-sm: 0.25rem;
- *   --radius-md: 0.5rem;
- * }
+ * Component <style> blocks sit outside layers and therefore
+ * win over all three layers without needing !important.
  */
+
+@layer reset, tokens, base;
+
+/* ============================================================
+   RESET — safe universal rules, ship as-is
+   ============================================================ */
+
+@layer reset {
+	*,
+	*::before,
+	*::after {
+		box-sizing: border-box;
+	}
+
+	body {
+		margin: 0;
+	}
+
+	img,
+	video {
+		max-inline-size: 100%;
+		display: block;
+	}
+}
+
+/* ============================================================
+   TOKENS — define your design system here
+   Uncomment and fill in values per project.
+   ============================================================ */
+
+@layer tokens {
+	:root {
+		/* === Colour === */
+		/* --color-bg:      ; */
+		/* --color-text:    ; */
+		/* --color-accent:  ; */
+
+		/* === Typography === */
+		/* --font-body: system-ui, sans-serif; */
+		/* --font-mono: ui-monospace, monospace; */
+		/* --font-size-base: 1rem; */
+		/* --line-height-base: 1.5; */
+
+		/* === Space scale === */
+		/* --space-1: 0.25rem; */
+		/* --space-2: 0.5rem;  */
+		/* --space-4: 1rem;    */
+		/* --space-8: 2rem;    */
+		/* --space-16: 4rem;   */
+
+		/* === Radii === */
+		/* --radius-sm: 0.25rem; */
+		/* --radius-md: 0.5rem;  */
+		/* --radius-full: 9999px; */
+	}
+}
+
+/* ============================================================
+   BASE — element defaults using token vars
+   Uncomment when tokens are defined.
+   ============================================================ */
+
+@layer base {
+	/* body {
+		font-family: var(--font-body, system-ui, sans-serif);
+		font-size: var(--font-size-base, 1rem);
+		line-height: var(--line-height-base, 1.5);
+		color: var(--color-text);
+		background-color: var(--color-bg);
+		-webkit-font-smoothing: antialiased;
+	} */
+}
