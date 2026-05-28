@@ -3,6 +3,41 @@
 
 A personal SvelteKit starter template. Use this to bootstrap new projects — it comes pre-configured with the tooling and conventions I use across projects.
 
+---
+
+## Getting started
+
+Choose the method that works best for you:
+
+### Option 1: GitHub Template (easiest)
+
+Click the **"Use this template"** button on this repo's GitHub page. GitHub will create a new repository with a clean history under your account.
+
+**Pros:** One-click setup, clean git history, no cloning needed.  
+**Cons:** No custom naming — you'll rename it afterward if needed.
+
+### Option 2: Bash script (customizable)
+
+Clone this repo and run the setup script:
+
+```sh
+git clone https://github.com/davidhund/vs-bootstrap-svelte.git
+cd vs-bootstrap-svelte
+./bin/create.sh ~/projects/my-new-app my-new-app
+```
+
+`bin/create.sh` will:
+1. Copy the template to your destination
+2. Strip the template's git history; re-init on `main`
+3. Rename the project in `package.json`
+4. Replace `README.md` with a clean project stub (`README.template.md`)
+5. Run `pnpm install`
+
+**Pros:** Full control, flexible naming, works offline.  
+**Cons:** Requires cloning first, a bit more manual.
+
+---
+
 ## Stack
 
 | Tool | Version | Purpose |
@@ -15,23 +50,6 @@ A personal SvelteKit starter template. Use this to bootstrap new projects — it
 | [Playwright](https://playwright.dev) | 1.x | E2E tests (`tests/`) |
 
 Type-checking: JSDoc + `svelte-check` — no TypeScript source files.
-
----
-
-## Bootstrap a new project
-
-```sh
-git clone https://github.com/davidhund/vs-bootstrap-svelte.git
-cd vs-bootstrap-svelte
-./bin/create.sh ~/projects/my-new-app my-new-app
-```
-
-`bin/create.sh` will:
-1. Copy the template to the destination
-2. Strip the template's git history; re-init on `main`
-3. Rename the project in `package.json`
-4. Replace `README.md` with a clean project stub (`README.template.md`)
-5. Run `pnpm install`
 
 ---
 
