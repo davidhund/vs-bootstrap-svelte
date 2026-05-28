@@ -22,6 +22,24 @@ No TypeScript source files. Type safety via JSDoc annotations + `svelte-check`.
 
 ---
 
+## Definition of done
+
+Before every commit, check whether your change affects any of the following.
+Update the listed docs as part of the same commit — not as a follow-up.
+
+| If you changed… | Update these docs |
+|---|---|
+| Added / removed a file or route | `ARCHITECTURE.md` structure · `README.md` structure |
+| Added / removed a `package.json` script | `CLAUDE.md` toolchain table · `README.md` commands · `README.template.md` |
+| Changed a convention (CSS, JS, HTML, Git) | `CLAUDE.md` conventions · `ARCHITECTURE.md` conventions |
+| Swapped or added a tool or dependency | `ARCHITECTURE.md` stack · `README.md` stack · `CLAUDE.md` project type line |
+| Changed `bin/create.sh` or bootstrap flow | `ARCHITECTURE.md` bootstrap · `README.md` bootstrap |
+| Changed adapter or SvelteKit config | `ARCHITECTURE.md` adapter · `CLAUDE.md` adapter |
+| Changed CI (`.github/workflows/`) | `ARCHITECTURE.md` testing · `SPEC.md` CI note |
+| Changed testing strategy or scope | `SPEC.md` · `CLAUDE.md` toolchain notes |
+
+---
+
 ## Toolchain quick-ref
 
 | Command | What it does |

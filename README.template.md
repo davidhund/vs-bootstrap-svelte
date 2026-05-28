@@ -1,3 +1,4 @@
+<!-- Update when: commands change · stack changes · setup steps change -->
 # PROJECT_NAME
 
 Short description of what this project does.

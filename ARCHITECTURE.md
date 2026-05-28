@@ -1,6 +1,6 @@
 # Architecture
 
-> Living document. Update when architectural decisions change.
+> **Update when:** a file is added or removed · a tool or dependency changes · a convention changes · an extension point is added · the bootstrap flow changes
 
 ## Purpose
 

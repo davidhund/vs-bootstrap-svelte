@@ -1,6 +1,6 @@
 # Spec
 
-> Living document. Describes what this template provides and the standards derived projects must meet.
+> **Update when:** a template requirement changes · the testing strategy changes · accessibility or performance targets change · the CI scope changes
 
 ---
 

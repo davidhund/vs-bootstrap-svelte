@@ -1,3 +1,4 @@
+<!-- Update when: commands change · project structure changes · stack versions change · bootstrap steps change -->
 # vs-bootstrap-svelte
 
 A personal SvelteKit starter template. Use this to bootstrap new projects — it comes pre-configured with the tooling and conventions I use across projects.
