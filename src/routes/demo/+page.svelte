@@ -11,13 +11,15 @@
 -->
 
 <script>
+	import { resolve } from '$app/paths';
+
 	/** @type {{ data: import('./$types').PageData }} */
 	let { data } = $props();
 </script>
 
 <main class="demo">
 	<header class="demo__header">
-		<a class="demo__back" href="/">← Back</a>
+		<a class="demo__back" href={resolve('/')}>← Back</a>
 		<h1 class="demo__title">Demo: server load</h1>
 		<p class="demo__description">
 			Data below was loaded in <code>+page.server.js</code> before this page rendered.
