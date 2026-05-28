@@ -106,7 +106,41 @@ This is especially valuable for:
 - Validating component code before committing
 - Getting accurate, up-to-date docs without manual lookups
 
-See [CLAUDE.md](./CLAUDE.md#svelte-ai-tools-mcp) for setup and usage details.
+### Setup (one-time)
+
+#### 1. Register the MCP server with Claude Code
+
+```sh
+claude mcp add -t http -s user svelte https://mcp.svelte.dev/mcp
+```
+
+This adds the Svelte MCP server at user level (available across all your projects).
+
+#### 2. Install Svelte skills to `~/.claude/skills/`
+
+Download the two Svelte skills from the official repository:
+
+```sh
+# svelte-code-writer skill
+mkdir -p ~/.claude/skills/svelte-code-writer
+curl -s https://raw.githubusercontent.com/sveltejs/ai-tools/main/tools/skills/svelte-code-writer/SKILL.md \
+  > ~/.claude/skills/svelte-code-writer/SKILL.md
+
+# svelte-core-bestpractices skill
+mkdir -p ~/.claude/skills/svelte-core-bestpractices
+curl -s https://raw.githubusercontent.com/sveltejs/ai-tools/main/tools/skills/svelte-core-bestpractices/SKILL.md \
+  > ~/.claude/skills/svelte-core-bestpractices/SKILL.md
+```
+
+Both skills will now be available in Claude Code sessions.
+
+#### 3. Done!
+
+The auto-trigger hook is already configured in `.claude/settings.json` — when you edit `.svelte` files, Claude will automatically be reminded to use these skills.
+
+---
+
+See [CLAUDE.md](./CLAUDE.md#svelte-ai-tools-mcp) for usage details and examples.
 
 ---
 
