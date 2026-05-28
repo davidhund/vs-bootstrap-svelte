@@ -138,6 +138,12 @@ Both skills will now be available in Claude Code sessions.
 
 The auto-trigger hook is already configured in `.claude/settings.json` — when you edit `.svelte` files, Claude will automatically be reminded to use these skills.
 
+**To update skills later** (with Svelte major releases):
+
+```sh
+./bin/update-svelte-skills.sh
+```
+
 ---
 
 See [CLAUDE.md](./CLAUDE.md#svelte-ai-tools-mcp) for usage details and examples.

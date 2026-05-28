@@ -68,6 +68,16 @@ This project is configured with the official **Svelte MCP** server and skills fo
 - Explicitly mention the skill name (e.g., "using svelte-code-writer, ...") for best results
 - Run `svelte-autofixer` before finalizing components to catch subtle Runes mistakes
 
+**Keeping skills up to date:**
+
+Skills are downloaded as static files to `~/.claude/skills/`. They should be refreshed periodically when Svelte or SvelteKit has a major release:
+
+```sh
+./bin/update-svelte-skills.sh
+```
+
+This re-downloads both skills from the official `sveltejs/ai-tools` repository. The MCP server (`https://mcp.svelte.dev/mcp`) is always live and provides current documentation, so this is mainly for keeping best-practices guidance current.
+
 ---
 
 ## Toolchain quick-ref
