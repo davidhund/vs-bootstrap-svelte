@@ -22,6 +22,7 @@ tooling choices, and quality defaults that apply across all projects derived fro
 | E2E tests | Playwright | Cross-browser, first-class SvelteKit integration |
 | Package manager | pnpm | Efficient disk use, strict by default |
 | Adapter | `adapter-auto` | Detects deployment target at build time |
+| AI tools | Svelte MCP + skills | Live docs, code validation, Runes pattern guidance via Claude Code |
 
 **Excluded deliberately:**
 - TypeScript — JSDoc gives type safety with less friction
@@ -153,6 +154,20 @@ The `bin/create.sh` script automates:
 ```sh
 ./bin/create.sh ~/projects/my-new-app my-new-app
 ```
+
+---
+
+## AI-assisted development
+
+The project is pre-configured with **Svelte MCP** for Claude Code / AI assistant workflows:
+
+- **MCP Server** (`https://mcp.svelte.dev/mcp`) provides live Svelte docs, code analysis, and Runes validation
+- **Skills** (`svelte-code-writer`, `svelte-core-bestpractices`) guide AI on modern Svelte 5 patterns
+- **Auto-trigger hook** (`.claude/settings.json`) reminds Claude to use skills when editing `.svelte` files
+
+This prevents Svelte 4 → 5 migration mistakes and ensures correct Runes usage without manual prompting.
+
+See [CLAUDE.md § Svelte AI tools](./CLAUDE.md#svelte-ai-tools-mcp) for details.
 
 ---
 

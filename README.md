@@ -91,6 +91,25 @@ bin/
 
 ---
 
+## AI-assisted development
+
+This template is optimized for working with Claude Code and other AI assistants through the **Svelte MCP** (Model Context Protocol):
+
+- **Live documentation:** The MCP server pulls current Svelte 5 and SvelteKit docs at request time — no stale training data
+- **Code validation:** The `svelte-autofixer` tool catches subtle Runes mistakes (incorrect `$state` usage, `$effect` vs `$derived` confusion, etc.)
+- **Auto-reminders:** When you edit `.svelte` files, Claude is reminded to use Svelte-specific skills
+- **Best practices:** The included skills encode canonical Svelte 5 patterns (reactivity, events, styling, component design)
+
+This is especially valuable for:
+- Catching Svelte 4 → 5 migration mistakes
+- Using modern Runes patterns correctly (`$state`, `$derived`, `$effect`, `$props`)
+- Validating component code before committing
+- Getting accurate, up-to-date docs without manual lookups
+
+See [CLAUDE.md](./CLAUDE.md#svelte-ai-tools-mcp) for setup and usage details.
+
+---
+
 ## CSS architecture
 
 `src/app.css` uses `@layer` to make the cascade explicit:

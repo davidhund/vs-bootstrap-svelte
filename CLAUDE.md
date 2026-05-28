@@ -40,6 +40,36 @@ Update the listed docs as part of the same commit — not as a follow-up.
 
 ---
 
+## Svelte AI tools (MCP)
+
+This project is configured with the official **Svelte MCP** server and skills for AI-assisted development:
+
+**MCP Server** (`https://mcp.svelte.dev/mcp`):
+- `list-sections` — list available Svelte 5 and SvelteKit documentation sections
+- `get-documentation` — fetch live docs from `svelte.dev` for specific sections
+- `svelte-autofixer` — static analysis tool that detects and suggests fixes for common Svelte 5 patterns (e.g., incorrect `$state` usage, outdated syntax)
+
+**Skills** (available in Claude Code):
+- `svelte-code-writer` — CLI tools for Svelte 5 documentation lookup and code analysis
+- `svelte-core-bestpractices` — canonical guidance on writing fast, robust modern Svelte 5 code (runes, reactivity, events, styling, etc.)
+
+**Auto-trigger hook** (`.claude/settings.json`):
+- When editing `.svelte`, `.svelte.ts`, or `.svelte.js` files, Claude is automatically reminded to use these skills
+- The hook runs silently; the MCP server is available at any time for doc lookups and code validation
+
+**Why this helps:**
+- Prevents accidental use of Svelte 4 patterns in a Svelte 5 codebase
+- Provides real-time access to current documentation (bypasses training data cutoff)
+- Catches common Runes mistakes: using `$effect` where `$derived` would work, improper `$state` mutations, legacy slot syntax, etc.
+- Reduces back-and-forth between Claude and the codebase during development
+
+**When working with Claude Code on `.svelte` files:**
+- You'll see a reminder about the skills in your context
+- Explicitly mention the skill name (e.g., "using svelte-code-writer, ...") for best results
+- Run `svelte-autofixer` before finalizing components to catch subtle Runes mistakes
+
+---
+
 ## Toolchain quick-ref
 
 | Command | What it does |
