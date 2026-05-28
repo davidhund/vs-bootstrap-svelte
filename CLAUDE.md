@@ -88,6 +88,7 @@ This re-downloads both skills from the official `sveltejs/ai-tools` repository. 
 | `pnpm build` | Production build |
 | `pnpm preview` | Preview production build |
 | `pnpm check` | svelte-kit sync + svelte-check (type + template errors) |
+| `pnpm check:watch` | svelte-check in watch mode — useful during development |
 | `pnpm lint` | Biome lint |
 | `pnpm format` | Biome format (writes in-place) |
 | `pnpm test:unit` | Vitest in watch mode |
