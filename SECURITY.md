@@ -4,7 +4,7 @@
 
 **Do not** open a public GitHub issue for security vulnerabilities.
 
-Instead, please report to [david.hund@gmail.com](mailto:david.hund@gmail.com) with:
+Instead, please report to the maintainer at `<owner-email>` with:
 - Description of the vulnerability
 - Affected versions
 - Steps to reproduce (if possible)
