@@ -6,20 +6,18 @@ A personal SvelteKit starter template. Use this to bootstrap new projects — it
 
 | Tool | Version | Purpose |
 |---|---|---|
-| [SvelteKit](https://kit.svelte.dev) | 2.x | Framework |
-| [Svelte](https://svelte.dev) | 5 (Runes) | UI |
+| [SvelteKit](https://svelte.dev/docs/kit) | 2.x | Framework (SSR-first) |
+| [Svelte](https://svelte.dev) | 5 · Runes | UI / reactivity |
 | [Vite](https://vite.dev) | 8 | Dev server & build |
-| [Biome](https://biomejs.dev) | 2 | Lint + format |
-| [Vitest](https://vitest.dev) | 4 | Unit tests |
-| [Playwright](https://playwright.dev) | 1.x | E2E tests |
+| [Biome](https://biomejs.dev) | 2 | Lint + format (replaces ESLint + Prettier) |
+| [Vitest](https://vitest.dev) | 4 | Unit tests (co-located with source) |
+| [Playwright](https://playwright.dev) | 1.x | E2E tests (`tests/`) |
 
-Type-checking via JSDoc + `svelte-check` (no TypeScript).
+Type-checking: JSDoc + `svelte-check` — no TypeScript source files.
 
 ---
 
 ## Bootstrap a new project
-
-Clone this repo and run the bootstrap script, pointing it at your new project destination:
 
 ```sh
 git clone https://github.com/davidhund/vs-bootstrap-svelte.git
@@ -27,49 +25,34 @@ cd vs-bootstrap-svelte
 ./bin/create.sh ~/projects/my-new-app my-new-app
 ```
 
-The script will:
+`bin/create.sh` will:
 1. Copy the template to the destination
-2. Strip the template's git history and re-init
+2. Strip the template's git history; re-init on `main`
 3. Rename the project in `package.json`
-4. Run `pnpm install`
+4. Replace `README.md` with a clean project stub (`README.template.md`)
+5. Run `pnpm install`
 
 ---
 
-## Development
+## Commands
 
 ```sh
-pnpm dev          # start dev server at localhost:5173
-pnpm dev --open   # open in browser automatically
-```
-
-## Testing
-
-```sh
-pnpm test:unit    # run Vitest unit tests (watch mode)
-pnpm test:e2e     # install Playwright browsers + run E2E tests
-pnpm test         # run all tests once
-```
-
-## Lint & format
-
-```sh
-pnpm lint         # Biome lint
-pnpm format       # Biome format (writes)
-pnpm check        # svelte-check (type + template errors)
-```
-
-## CI
-
-```sh
-pnpm ci           # biome ci + svelte-check + unit tests
-```
-
-## Build
-
-```sh
+pnpm dev          # dev server → localhost:5173
 pnpm build        # production build
-pnpm preview      # preview production build locally
+pnpm preview      # preview production build
+
+pnpm lint         # Biome lint
+pnpm format       # Biome format (writes in-place)
+pnpm check        # svelte-kit sync + svelte-check
+
+pnpm test:unit    # Vitest (watch mode)
+pnpm test:e2e     # install Playwright browsers + run E2E  ← local only
+pnpm test         # unit + E2E, single run                 ← local only
+pnpm ci           # lint + check + unit tests              ← no Playwright
 ```
+
+> **Note:** `pnpm test:e2e` is not run in CI — browser installs are slow.
+> Run E2E locally or add a dedicated pipeline step per project.
 
 ---
 
@@ -77,30 +60,61 @@ pnpm preview      # preview production build locally
 
 ```
 src/
-  app.css             ← design token layer (fill this in per project)
+  app.css             ← @layer CSS architecture (reset, tokens, base)
   app.html            ← HTML shell
+  hooks.server.js     ← server request hook (handle, sequence)
   lib/
-    index.js          ← shared library exports
+    index.js          ← $lib barrel exports
+    utils.js          ← example utility — replace or delete
+    utils.test.js     ← Vitest unit test example
   routes/
-    +layout.svelte    ← root layout
+    +layout.svelte    ← root layout; imports app.css, sets favicon
+    +layout.server.js ← root server load (data available to all pages)
     +page.svelte      ← home page
-tests/                ← Playwright E2E tests
+    +error.svelte     ← custom error page (404 + generic)
+    demo/             ← ⚠ delete when done; shows server load pattern
+static/
+  favicon.svg
+  robots.txt
+tests/
+  home.e2e.js         ← Playwright smoke test
+.github/
+  workflows/
+    ci.yml            ← Biome + svelte-check + unit tests
+.vscode/
+  extensions.json     ← recommends Svelte + Biome extensions
+  settings.json       ← format-on-save via Biome
 bin/
   create.sh           ← bootstrap script
 ```
 
 ---
 
+## CSS architecture
+
+`src/app.css` uses `@layer` to make the cascade explicit:
+
+| Layer | Active rules | Purpose |
+|---|---|---|
+| `reset` | box-sizing, body margin, img/video | Universal resets |
+| `tokens` | — (commented) | CSS custom property definitions |
+| `base` | — (commented) | Element defaults consuming tokens |
+
+Svelte component `<style>` blocks sit outside layers and automatically win — no `!important` needed.
+
+---
+
 ## Adapters
 
-Default adapter is `adapter-auto`. To target a specific platform, swap it in `svelte.config.js`:
+Default: `adapter-auto` (auto-detects Vercel, Netlify, Cloudflare, etc.).
 
+To target a specific platform:
 ```sh
-pnpm add -D @sveltejs/adapter-node   # Node.js
-pnpm add -D @sveltejs/adapter-static # Static / SSG
+pnpm remove @sveltejs/adapter-auto
+pnpm add -D @sveltejs/adapter-node    # Node.js / Docker
+pnpm add -D @sveltejs/adapter-static  # static site / CDN
 ```
-
-See [SvelteKit adapters](https://svelte.dev/docs/kit/adapters) for the full list.
+Update the import in `svelte.config.js`.
 
 ---
 

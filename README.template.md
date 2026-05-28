@@ -2,33 +2,44 @@
 
 Short description of what this project does.
 
+## Stack
+
+<!-- Fill in or remove -->
+| Tool | Version | Purpose |
+|---|---|---|
+| SvelteKit | 2.x | Framework |
+| Svelte | 5 · Runes | UI |
+| Vite | 8 | Build |
+| Biome | 2 | Lint + format |
+
+---
+
 ## Development
 
 ```sh
-pnpm dev          # start dev server at localhost:5173
-pnpm dev --open   # open in browser automatically
+pnpm dev          # dev server → localhost:5173
+pnpm dev --open   # open in browser
 ```
 
-## Testing
-
-```sh
-pnpm test:unit    # Vitest (watch mode)
-pnpm test:e2e     # Playwright E2E
-pnpm test         # run all tests once
-```
-
-## Lint & format
+## Commands
 
 ```sh
 pnpm lint         # Biome lint
 pnpm format       # Biome format (writes)
 pnpm check        # svelte-check
+
+pnpm test:unit    # Vitest (watch mode)
+pnpm test:e2e     # Playwright E2E  ← local only, not in CI
 pnpm ci           # lint + check + unit tests
-```
 
-## Build
-
-```sh
 pnpm build        # production build
 pnpm preview      # preview production build
 ```
+
+---
+
+<!-- Remove this section once the demo route is deleted -->
+## Template demo
+
+Visit `/demo` to see the `+page.server.js` data-loading pattern.
+Delete `src/routes/demo/` when you no longer need it.
