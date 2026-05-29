@@ -38,6 +38,35 @@ cd vs-bootstrap-svelte
 
 ---
 
+## Examples & patterns
+
+**See working examples:**
+- Visit `/demo` after running `pnpm dev` — shows server-side data loading
+- Visit `/examples` — interactive Svelte 5 component patterns (`$state`, `$derived`)
+
+**API endpoint example:**
+- `GET /api/items` — returns JSON data
+- `POST /api/items` — accepts JSON request body with validation
+
+---
+
+## Quality assurance
+
+**Pre-commit hooks** (via husky):
+```sh
+# Automatically runs on every commit:
+pnpm ci          # lint + type-check + unit tests
+```
+
+To skip (not recommended): `git commit --no-verify`
+
+**Manual checks:**
+```sh
+pnpm check:watch # Type-checking in watch mode while developing
+```
+
+---
+
 ## Stack
 
 | Tool | Version | Purpose |
@@ -48,6 +77,7 @@ cd vs-bootstrap-svelte
 | [Biome](https://biomejs.dev) | 2 | Lint + format (replaces ESLint + Prettier) |
 | [Vitest](https://vitest.dev) | 4 | Unit tests (co-located with source) |
 | [Playwright](https://playwright.dev) | 1.x | E2E tests (`tests/`) |
+| [husky](https://typicode.github.io/husky/) | 9.x | Git hooks (auto-run `pnpm ci` on commit) |
 
 Type-checking: JSDoc + `svelte-check` — no TypeScript source files.
 
