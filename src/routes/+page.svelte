@@ -64,7 +64,6 @@
 		<a href="https://kit.svelte.dev/docs">SvelteKit docs</a>
 		<a href={resolve('/demo')}>Demo: server load →</a>
 		<a href={resolve('/examples')}>Component examples →</a>
-		<a href={resolve('/missing-page')}>Test error page →</a>
 	</footer>
 </main>
 
